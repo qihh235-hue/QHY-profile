@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | 个人作品集</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Sans+SC:wght@300;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS 样式部分 --- */
+        /* 页面淡入效果 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+body {
+    animation: fadeIn 0.8s ease-out;
+}
+        :root {
+            --bg-color: #ffffff;
+            --text-main: #121212;
+            --text-secondary: #000000;
+            --accent-color: #1d1d1d; /* 极简黑，你可以换成 #3498db 等彩色 */
+            --spacing: 40px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 导航栏 */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 6%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(240, 240, 240, 0.8);
+            backdrop-filter: blur(10px); /* 毛玻璃效果 */
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            margin-left: 30px;
+            font-size: 1.2rem;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.5;
+        }
+
+        /* Hero 个人简介区 */
+        .hero {
+            padding: 180px 6% 100px;
+            max-width: 1500px;
+        }
+
+        .hero span {
+            display: block;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            color: #cf88dd;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.2;
+            font-weight: 600;
+            margin-bottom: 30px;
+            display: inline-block; /* 必须加这行，缩放才生效 */
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); /* 高级缓动 */
+            cursor: default;
+            transform-origin: left center; /* 从左边开始放大 */
+            color: #000000;
+        }
+        .hero h1:hover {
+            transform: scale(1.03); /* 稍微放大一点点 */
+    
+        
+        }
+
+        .hero p {
+            font-size: 1.20rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            font-weight: 300;
+        }
+
+        /* 作品网格展示区 */
+        
+        .work-section {
+            padding: 0 6% 100px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 2fr); /* 经典的双列排版 */
+            gap: 60px 40px;
+        }
+
+        .project-card {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .img-container {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            background-color: #f0f0f0;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        /* 悬停效果 */
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color:#202020;
+        }
+
+        .project-info p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* 底部 */
+        footer {
+            padding: 100px 6%;
+            background: #fafafa;
+            text-align: center;
+        }
+
+        .footer-text h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .social {
+            margin-top: 30px;
+        }
+
+        .social a {
+            margin: 0 15px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px solid transparent;
+            transition: 0.3s;
+        }
+
+        .social a:hover {
+            border-bottom: 1px solid var(--text-main);
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 850px) {
+            .grid {
+                grid-template-columns: 1fr; /* 手机端变成一列 */
+                gap: 40px;
+            }
+            .hero {
+                padding-top: 140px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">DESIGN STUDIO</div>
+        <div class="nav-links">
+            
+            <a href="about me.html">About Me | 个人简历</a>
+          </div>
+    </nav>
+
+    <header class="hero">
+        <span>Portfolio 2022 - 2026</span>
+        <a href="about me.html"><h1>你好，我是 齐海莹 Qihaiying<br>专注于品牌策划与视觉</h1></a>
+        <p>从战略洞察到视觉落地，让设计成为品牌最直观的竞争力。</p>
+        <p>Clarity in Vision | Precision in Execution | Impact in Result</p>
+    </header>
+
+    <main class="work-section">
+        <div class="grid">
+            <a href="作品单独页01.html" class="project-card">
+                <div class="img-container">
+                    <img src="BA作品16.9.png" alt="项目一">
+                </div>
+                <div class="project-info">
+                    <h3>Boston Aesthetics 品牌策划与设计</h3>
+                    <p>Branding / Medical aesthetic / Oversea marketing</p>
+                </div>
+            </a>
+
+            <a href="作品单独页02.html" class="project-card">
+                <div class="img-container">
+                    <img src="ptepeth作品16.9.png" alt="项目二">
+                </div>
+                <div class="project-info">
+                    <h3>Petpeth品牌全案</h3>
+                    <p>Branding / App design / Marketing / Copywriting</p>
+                </div>
+            </a>
+
+            <a href="作品单独页03.html" class="project-card">
+                <div class="img-container">
+                    <img src="ZBAO作品16.9.jpg" alt="项目三">
+                </div>
+                <div class="project-info">
+                    <h3>众包物流品牌策划与设计</h3>
+                    <p>Branding / website design / Marketing / Copywriting</p>
+                </div>
+            </a>
+
+            <a href="作品单独页04.html" class="project-card">
+                <div class="img-container">
+                    <img src="雾山作品16.9.jpg" alt="项目四">
+                </div>
+                <div class="project-info">
+                    <h3>雾山茶坊品牌全案</h3>
+                    <p>Branding / VI / Copywriting</p>
+                </div>
+            </a>
+
+                  <a href="作品单独页05.html" class="project-card">
+                <div class="img-container">
+                    <img src="充电宝作品16.9.jpg" alt="项目五">
+                </div>
+                <div class="project-info">
+                    <h3>电酷快充IP品牌全案</h3>
+                    <p>Branding / IP / 3D design / Copywriting</p>
+                </div>
+
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-text">
+            <h2>聊聊你的下一个创意？</h2>
+            <p> Email:  (197) 0255-221@qq.com <br>
+            Phone: (185) 9552-4137
+            </p>
+            <div class="social">
+                <a href="about me.html">更多联系方式</a>
+             
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

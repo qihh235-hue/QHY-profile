@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目详情 | Coffee Brand Identity</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Sans+SC:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        /* 页面淡入效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        :root { 
+            --bg: #ffffff; 
+            --text: #121212; 
+            --gray: #666; 
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body { 
+            font-family: 'Inter', 'Noto Sans SC', sans-serif; 
+            background-color: var(--bg); 
+            color: var(--text); 
+            line-height: 1.6;
+            animation: fadeIn 0.8s ease-out;
+            /* 解决滚动时可能产生的毛边 */
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- 优化后的导航栏 --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 6%; /* 稍微收紧一点 padding 更有呼吸感 */
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            
+            /* 性能优化核心 */
+            background: rgba(240, 240, 240, 0.8); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
+            
+            /* 解决“卡顿”和闪烁 */
+            transform: translateZ(0); 
+            will-change: backdrop-filter, background-color;
+            transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+            
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .logo { 
+            font-weight: 600; 
+            font-size: 1.1rem; 
+            letter-spacing: 1px;
+            color: var(--text);
+        }
+
+        .back-link { 
+            text-decoration: none; 
+            color: var(--text); 
+            font-weight: 500; 
+            font-size: 0.9rem; 
+            transition: opacity 0.3s;
+        }
+        .back-link:hover { opacity: 0.5; }
+
+        /* 详情页容器 */
+        .container { 
+            max-width: 1100px; 
+            margin: 0 auto;
+            padding: 140px 6% 60px; /* 用 padding 替代 margin-top 防止背景透出空隙 */
+        }
+        
+        .project-header { margin-bottom: 60px; }
+        .project-header h1 { 
+            font-size: clamp(2.2rem, 5vw, 3.5rem); 
+            margin-bottom: 25px; 
+            font-weight: 600;
+            letter-spacing: -1px;
+        }
+
+        .project-meta { 
+            display: flex; 
+            gap: 40px; 
+            color: var(--gray); 
+            font-size: 0.9rem; 
+            border-top: 1px solid #eee; 
+            padding-top: 25px; 
+        }
+        .meta-item b { color: var(--text); display: block; margin-bottom: 6px; font-size: 0.8rem; text-transform: uppercase; }
+
+        .content-section { margin-top: 60px; }
+        .content-section p { 
+            font-size: 1.1rem; 
+            line-height: 1.8; 
+            color: #333; 
+            margin-bottom: 50px; 
+            max-width: 800px; 
+        }
+        
+        /* 图片展示 */
+        .full-img { 
+            width: 100%; 
+            border-radius: 12px; 
+            margin-bottom: 30px; 
+            display: block; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        footer { 
+            padding: 100px 6%; 
+            text-align: center; 
+            border-top: 1px solid #eee; 
+            margin-top: 100px; 
+            background-color: #fafafa;
+        }
+        .footer-info { margin-top: 20px; color: var(--gray); font-size: 0.9rem; }
+        .footer-info a { color: var(--text); text-decoration: none; font-weight: 500; }
+        
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">DESIGN STUDIO</div>
+        <a href="index.html" class="back-link">← 返回作品集</a>
+    </nav>
+
+    <div class="container">
+        <header class="project-header">
+            <h1>Coffee Brand Identity</h1>
+            <div class="project-meta">
+                <div class="meta-item"><b>类别</b> 品牌VI / 视觉延展</div>
+                <div class="meta-item"><b>年份</b> 2024</div>
+                <div class="meta-item"><b>职责</b> 策划 / 设计</div>
+            </div>
+        </header>
+
+        <section class="content-section">
+            <p>这里是项目的详细介绍。你可以描述这个设计的初衷、你解决的痛点以及最终达成的效果。对于设计师来说，展示“思考过程”和展示“最终效果”一样重要。</p>
+            
+            <img src="01长图.jpg" class="full-img" alt="细节展示1">
+            <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=1200&q=80" class="full-img" alt="细节展示2">
+        </section>
+    </div>
+
+    <footer>
+        <p>感谢阅读~ 想了解更多？</p>
+        <div class="footer-info">
+            <a href="about me.html">About Me | 个人简历 </a><br><br>
+             <p> Email:  (197) 0255-221@qq.com <br>
+            Phone: (185) 9552-4137
+        </div>
+    </footer>
+
+</body>
+</html>
